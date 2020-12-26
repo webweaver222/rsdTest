@@ -3,15 +3,12 @@ import { connect } from "react-redux";
 
 import useDidUpdateEffect from "../components/customHooks/didUpdateEffect";
 
-import {
-  filterPrice, filterBrand, filterCategory
-} from "../actions";
+import { filterPrice, filterBrand, filterCategory } from "../actions";
 import { getMaxPrice } from "../selectors";
 import { Product } from "../models/catalog";
 
 const mapDispatchToProps = (dispatch) => ({
-  onPriceFilter: (priceRange: number[]) =>
-    dispatch(filterPrice(priceRange)),
+  onPriceFilter: (priceRange: number[]) => dispatch(filterPrice(priceRange)),
   setBrandsFilter: (brand: any) => dispatch(filterBrand(brand)),
   setCategoriesFilter: (categories: any) =>
     dispatch(filterCategory(categories)),
@@ -43,7 +40,7 @@ const FiltersContainer = (Wrapped) =>
         ...new Set(props.items.map((item: Product) => item.brand)),
       ];
       props.setBrandsFilter(
-        brands.reduce((o: object, key: string) => ({ ...o, [key]: false }), {})
+        brands.reduce((o: any, key: any) => ({ ...o, [key]: false }), {})
       );
 
       const categories = [
@@ -51,10 +48,7 @@ const FiltersContainer = (Wrapped) =>
       ];
 
       props.setCategoriesFilter(
-        categories.reduce(
-          (o: object, key: string) => ({ ...o, [key]: false }),
-          {}
-        )
+        categories.reduce((o: any, key: any) => ({ ...o, [key]: false }), {})
       );
     }, [props.maxPrice, props.items]);
 
