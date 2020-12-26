@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import FiltersWrapper from "./FiltersWrapper";
 import Range from "../elements/Range";
 import CheckboxGroup from "../elements/CheckboxGroup";
@@ -14,6 +14,15 @@ const Filters = ({
   onPriceFilter,
   setBrandsFilter,
   setCategoriesFilter,
+}: {
+  priceRange: number[];
+  maxPrice: number;
+  brand: {};
+  category: {};
+  onChangePriceRange: Function;
+  onPriceFilter: Function;
+  setBrandsFilter: Function;
+  setCategoriesFilter: Function;
 }) => (
   <FiltersWrapper className="filters-wrapper">
     <div className="price-filter">

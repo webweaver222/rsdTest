@@ -1,4 +1,13 @@
-# shopify
+# rsdTest
+
 task
 
-This is interview task. Payment form for shop
+This is interview task. Catalog with Filters and Product Page
+
+git clone https://github.com/webweaver222/rsdTest.git
+
+cd rsdTest
+
+npm install
+
+npm start

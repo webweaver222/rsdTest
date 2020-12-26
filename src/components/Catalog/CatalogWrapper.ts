@@ -5,7 +5,6 @@ const CatalogWrapper = styled.div`
   display: flex;
   flex-direction: column;
 
-
   header {
     display: flex;
     justify-content: space-between;
@@ -30,7 +29,7 @@ const CatalogWrapper = styled.div`
     transform: translateY(-50%);
     cursor: pointer;
     font-size: 13px;
-    color: var(--secondary)
+    color: var(--secondary);
   }
 
   header .input-wrapper img {
@@ -48,93 +47,92 @@ const CatalogWrapper = styled.div`
     flex-wrap: wrap;
     align-content: space-between;
     flex: 1 1;
-    padding: 50px
+    padding: 50px;
   }
 
-  .products .product-wrapper  {
+  .products .product-wrapper {
     text-align: center;
     width: 33%;
     padding: 10px;
     cursor: pointer;
   }
 
+  .products .product-wrapper:hover {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
   .products .product-wrapper img {
-     height: 170px;
-     max-width: 180px;
+    height: 170px;
+    max-width: 180px;
   }
 
   .products .product-wrapper p {
-     margin: 15px 0;
+    margin: 15px 0;
   }
 
   .products .product-wrapper span {
-     color: var(--primary);
-     font-weight: 800;
+    color: var(--primary);
+    font-weight: 800;
   }
 
   @media only screen and (min-width: 1600px) {
     padding: 50px 100px;
 
     .products .product-wrapper img {
-     height: 200px;
-     max-width: 180px;
-  }
+      height: 200px;
+      max-width: 180px;
+    }
   }
 
   @media only screen and (max-width: 1200px) {
-
-    .products .product-wrapper  {
-    width: 50%;
-  }
+    .products .product-wrapper {
+      width: 50%;
+    }
 
     .products .product-wrapper img {
-     height: 150px;
-     max-width: 180px;
-  }
+      height: 150px;
+      max-width: 180px;
+    }
   }
 
   @media only screen and (max-width: 992px) {
-
     .input-wrapper {
-    position: relative;
-    width: 150px;
-  }
-
-  .products .product-wrapper img {
-     height: 100px;
-     max-width: 150px
+      position: relative;
+      width: 150px;
     }
 
+    .products .product-wrapper img {
+      height: 100px;
+      max-width: 150px;
+    }
   }
 
   @media only screen and (max-width: 576px) {
     padding: 20px;
 
     header {
-    flex-direction: column;
-    align-items: center
-  }
+      flex-direction: column;
+      align-items: center;
+    }
 
-  .products {
-    padding: 20px
-  }
+    .products {
+      padding: 20px;
+    }
 
-  header .input-wrapper {
-      margin-bottom: 20px
-  }
-    .products .product-wrapper  {
-    width: 50%;
-  }
+    header .input-wrapper {
+      margin-bottom: 20px;
+    }
+    .products .product-wrapper {
+      width: 50%;
+    }
   }
 
   @media only screen and (max-width: 450px) {
     .products .product-wrapper img {
-     height: 80px;
-     max-width: 100px
+      height: 80px;
+      max-width: 100px;
     }
   }
-
-  
-}`;
+`;
 
 export default CatalogWrapper;

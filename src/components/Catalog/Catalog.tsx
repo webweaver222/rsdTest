@@ -17,6 +17,7 @@ const Catalog = ({
   onPageChange,
   onSearch,
   onReset,
+  onProductClick,
 }: {
   items: Product[];
   totalItemsNum: number;
@@ -25,6 +26,7 @@ const Catalog = ({
   onPageChange: Function;
   onSearch: Function;
   onReset: Function;
+  onProductClick: Function;
 }) => {
   const [searchInput, setSearchInput] = useState("");
   return (
@@ -64,7 +66,11 @@ const Catalog = ({
       <section className="products">
         {items &&
           items.map((item) => (
-            <div className="product-wrapper" key={item.id}>
+            <div
+              className="product-wrapper"
+              key={item.id}
+              onClick={() => onProductClick(item.id)}
+            >
               <img src={item.image} alt="productImg" />
               <p>{item.title}</p>
               <span>{item.price} $</span>

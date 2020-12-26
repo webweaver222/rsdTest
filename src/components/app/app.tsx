@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-
-import { getData } from "../../actions";
+import { connect } from "react-redux";
 
 import { AppWrapper } from "./appWrapper";
 import Catalog from "../Catalog";
 import Filters from "../Filters";
+import ProductPage from "../ProductPage";
+import { getData } from "../../actions";
 
 const App = ({ mount }) => {
   useEffect(() => {
@@ -16,15 +16,13 @@ const App = ({ mount }) => {
   return (
     <AppWrapper>
       <Switch>
-        <Route path="/">
+        <Route exact path="/">
           <Filters />
           <Catalog />
         </Route>
 
-        <Route path="/products/:id?">
-          {
-            //<ProductPage />
-          }
+        <Route exact path="/:id?">
+          <ProductPage />
         </Route>
       </Switch>
     </AppWrapper>

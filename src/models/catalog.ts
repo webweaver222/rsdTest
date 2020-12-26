@@ -8,6 +8,10 @@ export interface Product {
   image: string;
 }
 
+export interface ProdcutPage {
+  item: Product;
+}
+
 export interface Catalog {
   items: Product[];
   currentPage: number;

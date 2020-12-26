@@ -1,4 +1,4 @@
-import { Catalog, Product } from "../models/catalog";
+import { Catalog } from "../models/catalog";
 import { Action, ActionTypes } from "../actions/catalog";
 
 const initialCatalog: Catalog = {

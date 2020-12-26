@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 
+import useDidUpdateEffect from "../components/customHooks/didUpdateEffect";
+
 import {
   ChangePriceRange,
   ChangeBrandsFilter,
@@ -19,17 +21,24 @@ const mapDispatchToProps = (dispatch) => ({
 
 const FiltersContainer = (Wrapped) =>
   connect(
-    ({ catalog, filters: { brand, category } }) => ({
+    ({ catalog, filters: { brand, category, priceFilter } }) => ({
       items: catalog.items,
       brand,
       category,
+      priceFilter,
       maxPrice: getMaxPrice(catalog),
     }),
     mapDispatchToProps
   )((props) => {
-    const [priceRange, setPriceRange] = useState([0, 0]);
+    const [priceRange, setPriceRange] = useState([0, props.maxPrice]);
 
     useEffect(() => {
+      if (props.priceFilter.length > 0) {
+        setPriceRange(props.priceFilter);
+      }
+    }, []);
+
+    useDidUpdateEffect(() => {
       setPriceRange([0, props.maxPrice]);
 
       const brands = [
