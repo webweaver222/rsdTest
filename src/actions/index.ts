@@ -1,7 +1,16 @@
 import json from "../../mock-products.json";
-import { loadItems, ActionTypes as CatalogTypes } from "../actions/catalog";
+import {
+  loadItems,
+  ActionTypes as CatalogTypes,
+  changePage,
+} from "../actions/catalog";
 import { loadItem } from "../actions/productPage";
-import { ActionTypes as FiltersTypes } from "../actions/filters";
+import {
+  ActionTypes as FiltersTypes,
+  ChangePriceRange,
+  ChangeBrandsFilter,
+  ChangeCategoriesFilter,
+} from "../actions/filters";
 import { Dispatch } from "react-redux";
 
 const getData = () => (dispatch: Dispatch) => {
@@ -12,9 +21,31 @@ const getSingleItem = (id) => (dispatch: Dispatch) => {
   return dispatch(loadItem(json.products.find((item) => item.id === id)));
 };
 
+const filterPrice = (priceRange) => (dispatch: Dispatch) => {
+  dispatch(ChangePriceRange(priceRange));
+  return dispatch(changePage(1));
+};
+
+const filterBrand = (brand) => (dispatch: Dispatch) => {
+  dispatch(ChangeBrandsFilter(brand));
+  return dispatch(changePage(1));
+};
+
+const filterCategory = (categories) => (dispatch: Dispatch) => {
+  dispatch(ChangeCategoriesFilter(categories));
+  return dispatch(changePage(1));
+};
+
 const reset = () => (dispatch: Dispatch) => {
   dispatch(CatalogTypes.RESET);
   return dispatch(FiltersTypes.RESET);
 };
 
-export { getData, getSingleItem, reset };
+export {
+  getData,
+  getSingleItem,
+  filterPrice,
+  filterBrand,
+  filterCategory,
+  reset,
+};

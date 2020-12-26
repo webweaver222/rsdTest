@@ -4,19 +4,17 @@ import { connect } from "react-redux";
 import useDidUpdateEffect from "../components/customHooks/didUpdateEffect";
 
 import {
-  ChangePriceRange,
-  ChangeBrandsFilter,
-  ChangeCategoriesFilter,
-} from "../actions/filters";
+  filterPrice, filterBrand, filterCategory
+} from "../actions";
 import { getMaxPrice } from "../selectors";
 import { Product } from "../models/catalog";
 
 const mapDispatchToProps = (dispatch) => ({
   onPriceFilter: (priceRange: number[]) =>
-    dispatch(ChangePriceRange(priceRange)),
-  setBrandsFilter: (brand: any) => dispatch(ChangeBrandsFilter(brand)),
+    dispatch(filterPrice(priceRange)),
+  setBrandsFilter: (brand: any) => dispatch(filterBrand(brand)),
   setCategoriesFilter: (categories: any) =>
-    dispatch(ChangeCategoriesFilter(categories)),
+    dispatch(filterCategory(categories)),
 });
 
 const FiltersContainer = (Wrapped) =>
