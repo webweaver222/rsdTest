@@ -17,21 +17,21 @@ const getData = () => (dispatch: Dispatch) => {
   return dispatch(loadItems(json.products));
 };
 
-const getSingleItem = (id) => (dispatch: Dispatch) => {
+const getSingleItem = (id: number) => (dispatch: Dispatch) => {
   return dispatch(loadItem(json.products.find((item) => item.id === id)));
 };
 
-const filterPrice = (priceRange) => (dispatch: Dispatch) => {
+const filterPrice = (priceRange: number[]) => (dispatch: Dispatch) => {
   dispatch(ChangePriceRange(priceRange));
   return dispatch(changePage(1));
 };
 
-const filterBrand = (brand) => (dispatch: Dispatch) => {
+const filterBrand = (brand: any) => (dispatch: Dispatch) => {
   dispatch(ChangeBrandsFilter(brand));
   return dispatch(changePage(1));
 };
 
-const filterCategory = (categories) => (dispatch: Dispatch) => {
+const filterCategory = (categories: any) => (dispatch: Dispatch) => {
   dispatch(ChangeCategoriesFilter(categories));
   return dispatch(changePage(1));
 };
