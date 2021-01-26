@@ -1,20 +1,30 @@
-import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
+import React, { useState, useEffect, ComponentType } from "react";
+import { connect, Dispatch } from "react-redux";
 
 import useDidUpdateEffect from "../components/customHooks/didUpdateEffect";
-
+import { getFilterObject } from "../utils";
 import { filterPrice, filterBrand, filterCategory } from "../actions";
 import { getMaxPrice } from "../selectors";
 import { Product } from "../models/catalog";
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: Dispatch) => ({
   onPriceFilter: (priceRange: number[]) => dispatch(filterPrice(priceRange)),
   setBrandsFilter: (brand: any) => dispatch(filterBrand(brand)),
   setCategoriesFilter: (categories: any) =>
     dispatch(filterCategory(categories)),
 });
 
-const FiltersContainer = (Wrapped) =>
+interface FiltersContainer {
+  items: Product[];
+  brand: {};
+  category: {};
+  priceFilter: [];
+  maxPrice: number;
+  setBrandsFilter: Function;
+  setCategoriesFilter: Function;
+}
+
+const FiltersContainer = (Wrapped: ComponentType<any>) =>
   connect(
     ({ catalog, filters: { brand, category, priceFilter } }) => ({
       items: catalog.items,
@@ -24,33 +34,29 @@ const FiltersContainer = (Wrapped) =>
       maxPrice: getMaxPrice(catalog),
     }),
     mapDispatchToProps
-  )((props) => {
-    const [priceRange, setPriceRange] = useState([0, props.maxPrice]);
+  )((props: FiltersContainer) => {
+    const {
+      items,
+      priceFilter,
+      maxPrice,
+      setBrandsFilter,
+      setCategoriesFilter,
+    } = props;
+    const [priceRange, setPriceRange] = useState([0, maxPrice]);
 
     useEffect(() => {
-      if (props.priceFilter.length > 0) {
-        setPriceRange(props.priceFilter);
+      if (priceFilter.length > 0) {
+        setPriceRange(priceFilter);
       }
     }, []);
 
     useDidUpdateEffect(() => {
-      setPriceRange([0, props.maxPrice]);
+      setPriceRange([0, maxPrice]);
 
-      const brands = [
-        ...new Set(props.items.map((item: Product) => item.brand)),
-      ];
-      props.setBrandsFilter(
-        brands.reduce((o: any, key: any) => ({ ...o, [key]: false }), {})
-      );
+      setBrandsFilter(getFilterObject<Product>(items, "brand"));
 
-      const categories = [
-        ...new Set(props.items.map((item: Product) => item.category)),
-      ];
-
-      props.setCategoriesFilter(
-        categories.reduce((o: any, key: any) => ({ ...o, [key]: false }), {})
-      );
-    }, [props.maxPrice, props.items]);
+      setCategoriesFilter(getFilterObject<Product>(items, "category"));
+    }, [maxPrice, items]);
 
     return (
       <Wrapped

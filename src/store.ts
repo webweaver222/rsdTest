@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
-import { AnyAction, Dispatch } from "redux";
+import { Dispatch } from "redux";
 
 import reducer from "./reducers";
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Product } from "../../models/catalog";
+import { Catalog as CatalogInterface } from "./type";
 
 import CatalogContainer from "../../containers/Catalog";
 import CatalogWrapper from "./CatalogWrapper";
@@ -18,16 +18,7 @@ const Catalog = ({
   onSearch,
   onReset,
   onProductClick,
-}: {
-  items: Product[];
-  totalItemsNum: number;
-  totalPages: number;
-  currentPage: number;
-  onPageChange: Function;
-  onSearch: Function;
-  onReset: Function;
-  onProductClick: Function;
-}) => {
+}: CatalogInterface) => {
   const [searchInput, setSearchInput] = useState("");
   return (
     <CatalogWrapper className="catalog-wrapper">
