@@ -11,7 +11,7 @@ import App from "./components/app";
 import store from "./store";
 
 const history = createBrowserHistory({
-  basename: "catalog",
+  basename: "shop",
 });
 
 ReactDom.render(
