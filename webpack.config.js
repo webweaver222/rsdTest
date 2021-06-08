@@ -24,8 +24,9 @@ module.exports = (env = {}) => {
     mode: isProd ? "production" : isDev && "development",
     entry: "./src/index.tsx",
     output: {
+      path: require("path").resolve(__dirname, "build"),
       filename: isProd ? "main-[hash:8].js" : undefined,
-      publicPath: "/",
+      publicPath: "/shop/",
     },
     resolve: {
       extensions: [".ts", ".tsx", ".js"],
