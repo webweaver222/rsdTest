@@ -5,6 +5,17 @@ import CheckboxGroup from "../elements/CheckboxGroup";
 
 import FiltersContainer from "../../containers/Filters";
 
+interface Filters {
+  priceRange: number[];
+  maxPrice: number;
+  brand: {};
+  category: {};
+  onChangePriceRange: Function;
+  onPriceFilter: Function;
+  setBrandsFilter: Function;
+  setCategoriesFilter: Function;
+}
+
 const Filters = ({
   priceRange,
   maxPrice,
@@ -14,16 +25,7 @@ const Filters = ({
   onPriceFilter,
   setBrandsFilter,
   setCategoriesFilter,
-}: {
-  priceRange: number[];
-  maxPrice: number;
-  brand: {};
-  category: {};
-  onChangePriceRange: Function;
-  onPriceFilter: Function;
-  setBrandsFilter: Function;
-  setCategoriesFilter: Function;
-}) => (
+}: Filters) => (
   <FiltersWrapper className="filters-wrapper">
     <div className="price-filter">
       <h4>Price</h4>

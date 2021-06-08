@@ -44,6 +44,11 @@ const FiltersContainer = (Wrapped: ComponentType<any>) =>
     } = props;
     const [priceRange, setPriceRange] = useState([0, maxPrice]);
 
+    const changePriceRange = (event: any, newValue: any) => {
+      if (isNaN(Number(newValue[0])) || isNaN(Number(newValue[1]))) return;
+      return setPriceRange([Number(newValue[0]), Number(newValue[1])]);
+    };
+
     useEffect(() => {
       if (priceFilter.length > 0) {
         setPriceRange(priceFilter);
@@ -62,10 +67,7 @@ const FiltersContainer = (Wrapped: ComponentType<any>) =>
       <Wrapped
         {...props}
         priceRange={priceRange}
-        onChangePriceRange={(event: any, newValue: any) => {
-          if (isNaN(Number(newValue[0])) || isNaN(Number(newValue[1]))) return;
-          return setPriceRange([Number(newValue[0]), Number(newValue[1])]);
-        }}
+        onChangePriceRange={changePriceRange}
       />
     );
   });
