@@ -29,9 +29,8 @@ const Catalog = ({
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
           />
-          <img
-            src="src/resources/svg/magnifying-glass.svg"
-            alt="search"
+          <div
+            className="search-icon"
             onClick={() => {
               onSearch(searchInput);
               return setSearchInput("");
