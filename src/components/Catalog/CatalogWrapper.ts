@@ -32,13 +32,17 @@ const CatalogWrapper = styled.div`
     color: var(--secondary);
   }
 
-  header .input-wrapper img {
-    height: 15px;
+  header .input-wrapper .search-icon {
     position: absolute;
-    right: 4px;
     top: 0;
     bottom: 0;
     margin: auto 0;
+    right: 5px;
+    z-index: 66;
+    height: 15px;
+    width: 15px;
+    background: url("src/resources/svg/magnifying-glass.svg") no-repeat;
+    background-size: cover;
     cursor: pointer;
   }
 
