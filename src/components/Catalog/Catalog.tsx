@@ -29,8 +29,9 @@ const Catalog = ({
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
           />
-          <div
-            className="search-icon"
+          <img
+            src="https://img.icons8.com/ios-filled/50/000000/search--v1.png"
+            alt="search"
             onClick={() => {
               onSearch(searchInput);
               return setSearchInput("");
